@@ -3,6 +3,7 @@ Name:		selinux-nginx-passenger
 Version:	0.1
 Release:	0.1%{?dist}
 License:        Public Domain
+Requires:   policycoreutils >= 2.2.5
 BuildRequires:	policycoreutils-python >= 2.2.5, selinux-policy-devel >= 3.12.1
 Source0:	nginx-passenger.fc
 Source1:	nginx-passenger.te
