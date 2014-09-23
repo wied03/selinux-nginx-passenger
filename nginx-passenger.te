@@ -1,0 +1,30 @@
+
+module nginx-passenger 1.0;
+
+require {
+	type var_run_t;
+	type user_home_dir_t;
+	type httpd_t;
+	type user_home_t;
+	type passenger_exec_t;
+	type postgresql_port_t;
+	type httpd_log_t;
+	type httpd_sys_content_t;
+	class process execmem;
+	class capability { fowner sys_resource fsetid sys_ptrace };
+	class tcp_socket name_connect;
+	class file { execute setattr read create execute_no_trans write ioctl open append };
+	class capability2 block_suspend;
+	class lnk_file { read getattr };
+	class dir { write search read create open getattr add_name };
+}
+
+#============= httpd_t ==============
+
+allow httpd_t httpd_log_t:file setattr;
+allow httpd_t passenger_exec_t:dir { search getattr };
+allow httpd_t self:capability sys_ptrace;
+allow httpd_t self:capability2 block_suspend;
+allow httpd_t user_home_t:file { execute execute_no_trans };
+allow httpd_t var_run_t:file { read write };
+

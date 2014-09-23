@@ -1,0 +1,2 @@
+/usr/local/share/ruby/site_ruby/phusion_passenger.*     gen_context(system_u:object_r:passenger_exec_t,s0)
+/usr/share/passenger    gen_context(system_u:object_r:passenger_exec_t,s0)
